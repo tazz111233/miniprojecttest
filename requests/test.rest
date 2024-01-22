@@ -1,10 +1,13 @@
-GET http://localhost:3002/api/currency/
+GET http://localhost:3001/adios
+
+###
+GET http://localhost:3001/api/currency/
 
 ### Get Currency by ID
-GET http://localhost:3002/api/currency/1 
+GET http://localhost:3001/api/currency/1 
 
 ### Post Currency
-POST http://localhost:3002/api/currency
+POST http://localhost:3001/api/currency
 Content-Type: application/json
 
 {
@@ -14,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Put Currency by ID
-PUT http://localhost:3002/api/currency/1/9.0
+PUT http://localhost:3001/api/currency/1/9.0
 Content-Type: application/json
 
 {
@@ -24,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Delete Currency by ID
-DELETE http://localhost:3002/api/currency/2
+DELETE http://localhost:3001/api/currency/2
 
 ### Unknown Endpoint
-GET http://localhost:3002/api/currency
+GET http://localhost:3001/api/currency
