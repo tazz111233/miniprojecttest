@@ -25,6 +25,11 @@ app.use((req, res) => {
 });
 
 const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port: ${PORT}`);
+sequelize.sync().then(() => {
+  console.log("connected to PG")
+  app.listen(PORT, () => {
+      console.log(`Server running on port: ${PORT}`)
+  }).catch((error) => {
+      console.error(error);
+  })
 });

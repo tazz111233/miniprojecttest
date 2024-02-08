@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/sequelize');
+const Country = require('./country')
 
 // { id, currencyCode, countryId, conversionRate }
 const Currencies = sequelize.define('Currencies', {
@@ -17,7 +18,7 @@ const Currencies = sequelize.define('Currencies', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model : country, 
+            model : Country, 
             key : 'id', 
         }
     }, 
