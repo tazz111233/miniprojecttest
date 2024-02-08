@@ -10,6 +10,6 @@ const sequelize = new Sequelize(process.env.PG_Name, process.env.PG_Username, pr
             rejectUnauthorized: true
         }
     }
-});
+}); 
 
 module.exports = sequelize;   
