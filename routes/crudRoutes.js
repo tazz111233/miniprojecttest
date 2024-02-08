@@ -4,7 +4,7 @@ const { currencies } = require('../currencies/data');
 
 router.get('/adios', (request, response) => {
   response.send('Hello World!');
-});
+});  
 
 router.get('/api/currency/', (request, response) => {
   response.json(currencies);
