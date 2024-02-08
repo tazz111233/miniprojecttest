@@ -5,13 +5,15 @@ const morgan = require('morgan');
 const { setupMW } = require('./utils/middleware');
 const currencyRoutes = require('./routes/crudRoutes');
 const data = require('./currencies/data'); 
+require('dotenv').config();
+const sequelize = require('./config/sequelize')
 
 app.use(cors());
 app.use(express.json());
 setupMW(app);
 
 app.use((req, res, next) => {
-  req.data = data; 
+  req.data = data; 2 
   next();
 });
 
