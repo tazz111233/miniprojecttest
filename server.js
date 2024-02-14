@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -5,7 +6,6 @@ const morgan = require('morgan');
 const { setupMW } = require('./utils/middleware');
 const currencyRoutes = require('./routes/crudRoutes');
 const data = require('./currencies/data'); 
-require('dotenv').config();
 const sequelize = require('./config/sequelize')
 
 app.use(cors());
@@ -29,7 +29,8 @@ sequelize.sync().then(() => {
   console.log("connected to PG")
   app.listen(PORT, () => {
       console.log(`Server running on port: ${PORT}`)
-  }).catch((error) => {
-      console.error(error);
   })
-});
+})
+.catch((error) => {
+  console.error("syncing database error", error);
+})
