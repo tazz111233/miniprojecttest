@@ -4,7 +4,7 @@
 GET http://localhost:3001/api/currency
 
 ### Get Currency by ID
-GET http://localhost:3001/api/currency/1 
+GET http://localhost:3001/api/currency/1
 
 ### Post Currency
 POST http://localhost:3001/api/currency
@@ -13,21 +13,21 @@ Content-Type: application/json
 {
   "currencyCode": "KWD",
   "countryId": 2,
-  "conversioRate": 2.0
+  "conversioRate": 0.99
 }
 
 ### Put Currency by ID
-PUT http://localhost:3001/api/currency/1/9.0
+PUT http://localhost:3001/api/currency/2/9.0
 Content-Type: application/json
 
 {
   "currencyCode": "KWD",
   "country": "Kuwait",
-  "conversionRate": 9.0
+  "conversionRate": 9.0 
 }
 
 ### Delete Currency by ID
-DELETE http://localhost:3001/api/currency/1
+DELETE http://localhost:3001/api/currency/2
 
 ### Unknown Endpoint
 GET http://localhost:3001/api/currency
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### DELETE (crudCountry)
-DELETE http://localhost:3001/api/country/3
+DELETE http://localhost:3001/api/country/2 
 
 
 
