@@ -1,27 +1,36 @@
 const express = require('express');
 const router = express.Router();
 // const { currencies } = require('../currencies/data'); 
-const {currency} = require('../models/currency');
+const currency = require('../models/currency');
 
 
-router.get('/adios',async (request, response) => {
-   try{
-    const currencies = await currency.findAll();
-    response.json(currencies); 
-   }
-   catch (error){
-    response.status(500).json({error: 'resource not found'})
-   }
-});  
+// router.get('/',async (request, response) => {
+//    try{
+//     const currencies = await currency.findAll();
+//     response.json(currencies); 
+//    }
+//    catch (error){
+//     response.status(500).json({error: 'resource not found'})
+//    }
+//   // response.status(201).json('routes success')
+// });  
+router.get('/', async(request, response) => {
+  try {
+      const currencies = await currency.findAll();
+      response.json(currencies);
+  } catch (error) {
+      response.status(500).json({ error: error.message });
+  }
+})
 
 // router.get('/api/currency/', (request, response) => {
 //   response.json(currencies);
-// });
+// }); 
 
-router.get('/api/currency/:id', async (request, response) => {
+router.get('/:id', async (request, response) => {
   try{
   const getId = parseInt(request.params.id);
-  const result = await currency.findAll(getId);
+  const result = await currency.findByPk(getId);
   if (!result) throw new Error('resource not found')
   response.json(result)
   }
@@ -30,26 +39,28 @@ router.get('/api/currency/:id', async (request, response) => {
   }
 });
 
-router.post('/api/currency', async (request, response) => {
+router.post('/', async (request, response) => {
   try {
-  const   { currencyCode, country, conversionRate } = request.body;
-  if (!currencyCode || !country || !conversionRate) {
+  const   { currencyCode, countryId, conversioRate } = request.body;
+  if (!currencyCode || !countryId || !conversioRate) {
     return response.status(400).json({ error: 'content missing' });
   }
+
+  //const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
   const postCurrency = await currency.create({
-    id, 
-    currencyCode, 
-    country, 
-    conversionRate });
-    return response.json(postCurrency); 
+    currencyCode,       
+    countryId, 
+    conversioRate});
+    response.status(201).json(postCurrency); 
     console.log('New Currency Created:', postCurrency);
 }
   catch(error){
     return response.status(201).json(error);
   }
+// response.status(201).json('post request')
 });
 
-router.put('/api/currency/:id/:newRate', async (request, response) => {
+router.put('/:id/:newRate', async (request, response) => {
   try{
   const putId = parseInt(request.params.id);
   const newRate = parseFloat(request.params.newRate);
@@ -62,10 +73,10 @@ router.put('/api/currency/:id/:newRate', async (request, response) => {
   }  
 });
 
-router.delete('/api/currency/:id', async (request, response) => {
+router.delete('/:id', async (request, response) => {
   try{
   const deleteId = parseInt(request.params.id);
-  const index = await currency.destroy ({where: (deleteId)});
+  const index = await currency.destroy ({where: {id:deleteId}});
     if (index !== -1) throw new Error(index);
     response.sendStatus(204).json;
   } catch (error) {
