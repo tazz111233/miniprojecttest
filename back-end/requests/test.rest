@@ -1,1 +1,54 @@
-GET http://localhost:3001/api/currency/
+# GET http://localhost:3001/adios
+
+###
+GET http://localhost:3001/api/currency
+
+### Get Currency by ID
+GET http://localhost:3001/api/currency/1 
+
+### Post Currency
+POST http://localhost:3001/api/currency
+Content-Type: application/json
+
+{
+  "currencyCode": "KWD",
+  "countryId": 2,
+  "conversioRate": 2.0
+}
+
+### Put Currency by ID
+PUT http://localhost:3001/api/currency/1/9.0
+Content-Type: application/json
+
+{
+  "currencyCode": "KWD",
+  "country": "Kuwait",
+  "conversionRate": 9.0
+}
+
+### Delete Currency by ID
+DELETE http://localhost:3001/api/currency/1
+
+### Unknown Endpoint
+GET http://localhost:3001/api/currency
+
+### GET (cCroutes)
+GET http://localhost:3001/currency-countryName  
+
+
+
+### GET (crudCountry)
+GET http://localhost:3001/api/country 
+
+### POST (crudCountry)
+POST http://localhost:3001/api/country
+Content-Type: application/json
+
+{
+  "name" : "Kuwait"
+}
+
+
+### DELETE (crudCountry)
+DELETE http://localhost:3001/api/country/3
+
