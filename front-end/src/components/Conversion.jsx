@@ -7,19 +7,19 @@ function Conversion() {
       <h2 className="title">Currency Converter</h2>
       <form>
         <div className="form-field">
-          <label For="currency-from">Currency Code From:</label>
+          <label htmlFor="currency-from">Currency Code From:</label>
           <input className="input-field"
                  type="text" 
                  id="currency-from"  />
         </div>
         <div className="form-field">
-          <label For="amount">Amount:</label>
+          <label htmlFor="amount">Amount:</label>
           <input className="input-field"
                  type="number" 
                  id="amount"  />
         </div>
         <div className="form-field">
-          <label For="currency-to">Currency Code To:</label>
+          <label htmlFor="currency-to">Currency Code To:</label>
           <input className="input-field"
                  type="text" 
                  id="currency-to"  />
