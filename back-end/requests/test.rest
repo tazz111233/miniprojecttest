@@ -13,7 +13,7 @@ Content-Type: application/json
 {
   "currencyCode": "KWD",
   "countryId": 2,
-  "conversioRate": 0.99
+  "conversionRate": 0.99
 }
 
 ### Put Currency by ID
