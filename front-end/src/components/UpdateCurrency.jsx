@@ -27,28 +27,29 @@ function UpdateCurrency() {
       <h2>Update Currency</h2>
       <form onSubmit={handleUpdate}>
         <div className="form-group">
-          <label htmlFor="updateCode" className="Update-label">Currency Code:</label>
+          <label className="Update-label"
+                 htmlFor="updateCode" >Currency Code:</label>
           <input
+            className="Update-input"
             type="text"
             id="updateCode"
             value={updateCode}
             onChange={(e) => setUpdateCode(e.target.value)}
             required
-            className="Update-input"
           />
         </div>
         <div className="form-group">
           <label htmlFor="amount" className="UpdateCurrency-label">Amount:</label>
           <input
+            className="Update-input"
             type="number"
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             required
-            className="Update-input"
           />
         </div>
-        <button type="submit" className="Update-button">Update</button>
+        <button  className="Update-button" type="submit">Update</button>
       </form>
 
       {putData && (

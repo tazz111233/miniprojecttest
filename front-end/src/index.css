@@ -209,3 +209,45 @@ input {
 .put-data p {
   margin-bottom: 5px;
 }
+
+/* Delete.css */
+.delete-container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.ids {
+  list-style: none;
+  padding: 0;
+}
+
+.del-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.del-button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #dc3545;
+  color: white;
+  margin-top: 10px;
+}
+
+.del-button:hover {
+  background-color: #c82333;
+}
+
+.del-msg {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #dc3545;
+}

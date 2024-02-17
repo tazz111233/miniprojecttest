@@ -4,7 +4,7 @@ import Login from './Login';
 import Conversion from './Conversion';
 import AddCurrency from './AddCurrency';
 import UpdateCurrency from './UpdateCurrency';
-
+import Delete  from './Delete';
 function App() {
   return (
     <div>
@@ -16,6 +16,8 @@ function App() {
       <AddCurrency />
       <hr />
       <UpdateCurrency />
+      <hr />
+      <Delete/> 
       <hr />
     </div>
   );
