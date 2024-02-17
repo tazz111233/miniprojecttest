@@ -40,6 +40,7 @@ router.get('/:id', async (request, response) => {
 });
 
 router.post('/', async (request, response) => {
+  console.log('request recieved')
   try {
   const   { currencyCode, countryId, conversionRate } = request.body;
   if (!currencyCode || !countryId || !conversionRate) {
