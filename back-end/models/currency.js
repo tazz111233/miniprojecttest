@@ -22,7 +22,7 @@ const Currencies = sequelize.define('Currencies', {
             key : 'id', 
         }
     }, 
-    conversioRate: {
+    conversionRate: {
         type: DataTypes.FLOAT,
         allowNull: false
     }

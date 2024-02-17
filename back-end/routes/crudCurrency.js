@@ -41,16 +41,16 @@ router.get('/:id', async (request, response) => {
 
 router.post('/', async (request, response) => {
   try {
-  const   { currencyCode, countryId, conversioRate } = request.body;
-  if (!currencyCode || !countryId || !conversioRate) {
+  const   { currencyCode, countryId, conversionRate } = request.body;
+  if (!currencyCode || !countryId || !conversionRate) {
     return response.status(400).json({ error: 'content missing' });
   }
 
-  //const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
+  
   const postCurrency = await currency.create({
     currencyCode,       
     countryId, 
-    conversioRate});
+    conversionRate});
     response.status(201).json(postCurrency); 
     console.log('New Currency Created:', postCurrency);
 }
