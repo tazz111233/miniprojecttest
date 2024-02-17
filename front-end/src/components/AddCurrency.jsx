@@ -15,7 +15,7 @@ function AddCurrency() {
       const response = await axios.post('http://localhost:3001/api/currency', {
         currencyCode,
         countryId: parseInt(countryId),
-        conversioRate: parseFloat(conversionRate) 
+        conversionRate: parseFloat(conversionRate) 
       });
       console.log('New Currency Created:', response.data);
       setResponseData(response.data); 
@@ -25,7 +25,7 @@ function AddCurrency() {
       setConversionRate('');
     } catch (error) {
       console.error('Error adding currency:', error);
-      setError('Failed to add currency. Please try again.'); 
+      setError('Failed to add currency. Please try again...'); 
     }
   };
 
@@ -61,7 +61,7 @@ function AddCurrency() {
           <h3>New Currency Created:</h3>
           <p>Currency Code: {responseData.currencyCode}</p>
           <p>Country ID: {responseData.countryId}</p>
-          <p>Conversion Rate: {responseData.conversioRate}</p>
+          <p>Conversion Rate: {responseData.conversionRate}</p>
         </div>
       )}
       {error && ( 

@@ -3,20 +3,22 @@ import '../index.css';
 import Login from './Login';
 import Conversion from './Conversion';
 import AddCurrency from './AddCurrency';
+import UpdateCurrency from './UpdateCurrency';
 
 function App() {
   return (
     <div>
       <h1>Currency-Country</h1>
       <Login />
-       <hr />
-      <Conversion/>
       <hr />
-      <AddCurrency/>
-      <hr/> 
+      <Conversion />
+      <hr />
+      <AddCurrency />
+      <hr />
+      <UpdateCurrency />
+      <hr />
     </div>
   );
 }
 
-export default App; 
-
+export default App;
