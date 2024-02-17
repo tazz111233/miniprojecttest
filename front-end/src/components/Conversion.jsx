@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 
-function Conversion() {
+function Conversion({ currenciesData }) {
+ const [convertCode, setConvertCode] = useState(''); 
+
+  const handleChange = (event) => {
+    setConvertCode(event.target.value);
+    };
+    
   return (
     <div className="Conversion-container">
-      <h2 className="title">Currency Converter</h2>
+      <h2 className="title">Convert Currency</h2>
+      <select className="select-field" value={convertCode} onChange={handleChange}>
+        <option value="">Select code</option>
+        {currenciesData.map(currency => (
+          <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
+        ))}
+      </select>
       <form>
         <div className="form-field">
           <label htmlFor="currency-from">Currency Code From:</label>
