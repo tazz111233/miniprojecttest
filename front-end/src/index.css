@@ -1,114 +1,165 @@
+body {
+  background-image: url('https://media.istockphoto.com/id/1789208163/video/animated-blue-dollar-background-money-flies-from-top-to-bottom-symbol-of-dollar-looped-video.jpg?s=640x640&k=20&c=-9OU92DC3C3iDVucWYBFgGBgTWAcjZk9dPy_54ObVQE=');
+  background-size: cover;
+  background-position: fixed;
+}
+
+.logo {
+  width: 60px; 
+  border-radius: 50px;
+  height: 60px;
+  display: flex;
+  border: 2px solid #00b6d6;
+}
+.header{
+  display: flex;
+  align-items: center; 
+}
+h1 {
+  font-size: 28px; 
+  letter-spacing: 3px; 
+  margin-left: 450px;
+  border: 2px solid #00b6d6; 
+  box-shadow: 1px 1px 9px #00b6d6;
+}
 /* Login.css */
 .Login-container {
-  width: 300px;
+  width: 400px;
   margin: 50px auto;
-  padding: 22px;
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 30px;
+  border: 2px solid #00b6d6; 
+  background: linear-gradient(to bottom, #ffffff, #daf6f6); 
+  border-radius: 10px;
 }
-
 .input-label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
-
 .input-label span {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 1.3em;
+  margin-bottom: 12px;
 }
-
 input {
-  width: 100%;
-  padding: 8px;
+  width: 85%;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 15px;
 }
 
 .buttons {
-  margin-top: 20px;
+  margin-top: 25px;
 }
-
-.login-button,
-.signup-button {
-  padding: 10px 20px;
+.login-button{
+  padding: 9px 0;
+  width: 30%;
   border: none;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  margin-left: 50px;
+}
+.signup-button {
+  padding: 9px 0;
+  width: 30%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  margin-left: 50px;
 }
 
 .login-button {
-  background-color: #4caf50;
+  background-color: #2ecc71;
   color: white;
-  margin-right: 10px;
-}
-
-.login-button:hover {
-  background-color: #45a049;
 }
 
 .signup-button {
-  background-color: #2196f3;
+  background-color: #3498db;
   color: white;
 }
 
+.login-button:hover,
 .signup-button:hover {
-  background-color: #1e87dc;
+  background-color: #2980b9;
 }
+
 
 /* conversion.css */
 .Conversion-container {
+  background: linear-gradient(to bottom, #ffffff, #daf6f6); 
   width: 300px;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 30px;
+  border: 2px solid #00b6d6; 
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #000000;
 }
 
 .form-field {
-  margin-bottom: 15px;
+  margin-bottom: 17px;
+  width: 80%;
 }
 
-.label {
-  font-weight: bold;
-}
-
-.input-field {
-  width: calc(100% - 20px);
+.input-field{
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
 }
-
+.select-field {
+  width: 36%;
+  padding: 5px;
+  border: 1px solid #00b6d6;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+.input-field:focus,
+.select-field:focus {
+  outline: none;
+  border-color: #00b6d6;
+}
 .convert-button {
-  width: 100%;
-  padding: 10px;
+  width:40%;
+  padding: 11px 0;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #4CAF50;
+  font-size: 1.2em;
+  background-color: #3498db;
   color: white;
+  transition: background-color 0.3s ease;
+  margin-left: 90px;
 }
 
 .convert-button:hover {
-  background-color: #45a049;
+  background-color: #2980b9;
 }
 
 /* AddCurrency.css */
 .add-currency-container {
   max-width: 400px;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 30px;
+  border: 2px solid #00b6d6; 
+  background: linear-gradient(to bottom, #ffffff, #daf6f6); 
+  border-radius: 10px;
+  
 }
 
 .currency-form {
@@ -117,29 +168,27 @@ input {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1px;
+  padding: 5px;
 }
-
-.label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.input-field {
-  width: 100%;
+#countryId, #conversionRate, #currencyCode{
+  width: 80%;
   padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
 }
-
+#countryId:focus, #conversionRate:focus, #currencyCode:focus {
+  outline: none;
+  border-color: #00b6d6;
+}
 .submit-button {
-  width: 100%;
-  padding: 10px 20px;
+  width: 23%;
+  padding: 10px 0px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   background-color: #4caf50; 
   color: white;
+  font-size: 16px;
+  margin-left: 150px;
 }
 
 .submit-button:hover {
@@ -157,89 +206,129 @@ input {
 .response-data p {
   margin-bottom: 5px;
 }
-
-
+.display-data{
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #00b6d6;
+  border-radius: 5px;
+  width: 45%;
+  margin-left: 10px;
+}
+.display-data h3{
+  margin-bottom: 10px;
+  color: #0072e4;
+  font-size: 16px;
+}
+.display-data strong{
+  color: #0072e4;
+}
 /* UpdateCurrency.css */
 .UpdateCurrency-container {
-  max-width: 400px;
+  width: 40%;
   margin: 50px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border: 2px solid #00b6d6; 
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #ffffff, #daf6f6); 
 }
 
-.Update-label {
-  font-weight: bold;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex: 0 0 calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
 
 .Update-input {
-  width: calc(100% - 20px);
-  padding: 8px;
+  width: 50%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  font-size: 1em;
 }
-
+.Update-input:focus{
+  outline: none;
+  border-color: #00b6d6;
+}
 .Update-button {
-  width: 100%;
-  padding: 10px 20px;
+  width: 50%;
+  padding: 10px;
   border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  background-color: #4caf50; 
+  border-radius: 5px;
+  background-color: #3498db;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 200px;
 }
 
 .Update-button:hover {
-  background-color: #45a049; 
+  background-color: #2980b9;
 }
 
 .put-data {
   margin-top: 20px;
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 1px solid #00b6d6;
   border-radius: 5px;
+  width: 40%;
+  margin-left: 10px;
 }
-
-.put-data h3 {
+.put-data h3{
   margin-bottom: 10px;
+  color: #0072e4;
 }
-
-.put-data p {
-  margin-bottom: 5px;
+.put-data strong{
+  color: #0072e4;
 }
-
+.select-Ufield {
+  width: 27%;
+  padding: 5px;
+  border: 1px solid #00b6d6;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+.select-Ufield:focus {
+  outline: none;
+  border-color: #00b6d6;
+}
 /* Delete.css */
 .delete-container {
-  width: 300px;
+  width: 400px;
   margin: 50px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.ids {
-  list-style: none;
-  padding: 0;
-}
-
-.del-label {
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: block;
+  border: 2px solid #00b6d6; 
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #ffffff, #daf6f6); 
+  margin-bottom: 220px;
 }
 
 .del-button {
-  width: 100%;
-  padding: 10px 20px;
+  width: 30%;
+  padding: 10px 1px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   background-color: #dc3545;
   color: white;
   margin-top: 10px;
+  margin-left: 100px;
+  font-size: 16px;
 }
 
 .del-button:hover {
@@ -250,4 +339,8 @@ input {
   margin-top: 10px;
   font-weight: bold;
   color: #dc3545;
+  margin-left: 200px;
+}
+.codes{
+  font-size: 18px;
 }

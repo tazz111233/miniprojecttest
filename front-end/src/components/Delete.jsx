@@ -1,53 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import '../index.css'; 
 
-const DeleteId = () => {
-  const [currencyId, setCurrencyId] = useState('');
-  const [msg, setMsg] = useState('');
-  const [getIds, setGetIds] = useState([]);
-
-  useEffect(() => {
-    fetchGetIds();
-  }, []);
-
-  const fetchGetIds = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/api/currency');
-      setGetIds(response.data.map(currency => currency.id));
-    } catch (error) {
-      console.error('Error fetching currency IDs:', error);
-    }
-  };
+const DeleteId = ({ currenciesData }) => {
+  const [deleteCode, setDeleteCode] = useState(''); //store the selected currencyCode..
+  const [msg, setMsg] = useState(''); //store the msg after deletion..
 
   const handleChange = (event) => {
-    setCurrencyId(event.target.value);
+    setDeleteCode(event.target.value); //Update the selected currencyCode..
   };
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3001/api/currency/${currencyId}`);
-      fetchGetIds();
+      const deleteId = currenciesData.find(currency => currency.currencyCode === deleteCode); // Find the currency to del..
+      if (!deleteId) {
+        return; //If currency nt found, exit..
+      }
+      await axios.delete(`http://localhost:3001/api/currency/${deleteId.id}`); //Send del req to del the currency..
+      setMsg(`Deleted ID wid code:  ${deleteCode}`); //set success msg..
     } catch (error) {
-      setMsg(`Deleted ID: ${currencyId}`);
+      console.error('Error deleting currency:', error); // log err if deletion fails..
+      setMsg(`Failed to delete currency with code ${deleteCode}`); //set err msg..
     }
   };
-
+  
   return (
     <div className="delete-container">
-      <h2>Delete Currency ID</h2>
-      <p className="ids">Currency IDs:</p>
-      <ul className="ids">
-        {getIds.map(id => (
-          <li key={id}>{id}</li>
+      <h2>Delete Currency</h2>
+      <p className="codes">Currency Codes:</p>
+      
+      <select className="select-field" value={deleteCode} onChange={handleChange}>
+        <option value="">Select code</option>
+        {currenciesData.map(currency => (
+          <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
         ))}
-      </ul>
-      <label className="del-label" htmlFor="currencyId">Enter Currency ID to Delete:</label>
-      <input 
-         id="currencyId"
-         type="text" 
-         value={currencyId} onChange={handleChange} />
+      </select>
+
+
       <button className="del-button" onClick={handleDelete}>Delete</button>
+
       {msg && <p className="del-msg">{msg}</p>}
     </div>
   );

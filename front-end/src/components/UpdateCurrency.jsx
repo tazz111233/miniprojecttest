@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../index.css';
 
-function UpdateCurrency() {
+function UpdateCurrency({ currenciesData }) {
   const [updateCode, setUpdateCode] = useState('');
   const [amount, setAmount] = useState('');
   const [putData, setPutData] = useState(null);
 
+  const handleChange = (event) => {
+    setUpdateCode(event.target.value);
+  };
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -25,14 +29,19 @@ function UpdateCurrency() {
   return (
     <div className="UpdateCurrency-container">
       <h2>Update Currency</h2>
-      <form onSubmit={handleUpdate}>
+      <select className="select-Ufield" value={updateCode} onChange={handleChange}>
+            <option value="">Select code</option>
+            {currenciesData.map(currency => (
+              <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
+            ))}
+          </select>
+      <form onSubmit={handleUpdate} className="form-container">
         <div className="form-group">
-          <label className="Update-label"
-                 htmlFor="updateCode" >Currency Code:</label>
+          <label htmlFor="updateCode" className="UpdateCurrency-label">Currency Code:</label>
           <input
             className="Update-input"
             type="text"
-            id="updateCode"
+            id="update"
             value={updateCode}
             onChange={(e) => setUpdateCode(e.target.value)}
             required
@@ -49,14 +58,16 @@ function UpdateCurrency() {
             required
           />
         </div>
-        <button  className="Update-button" type="submit">Update</button>
+        <div className="button-group">
+          <button className="Update-button" type="submit">Update</button>
+        </div>
       </form>
 
       {putData && (
         <div className="put-data">
           <h3>Updated:</h3>
-          <p>Currency Code: {putData.currencyCode}</p>
-          <p>New Conversion Rate: {putData.conversionRate}</p> 
+          <p>Currency Code: <strong>{putData.currencyCode}</strong></p>
+          <p>New Conversion Rate: <strong>{putData.conversionRate}</strong></p> 
         </div>
       )}
     </div>

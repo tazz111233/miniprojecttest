@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../index.css';
 import Login from './Login';
 import Conversion from './Conversion';
 import AddCurrency from './AddCurrency';
 import UpdateCurrency from './UpdateCurrency';
-import Delete  from './Delete';
+import Delete from './Delete';
+import logo from '../utils/logo.jpg';
+
 function App() {
+  const [currencyData, setCurrencyData] = useState([]); //store fetched currency data..
+
+  useEffect(() => {
+    fetchCurrencyData();
+  }, []);
+
+  const fetchCurrencyData = async () => {
+    try {
+      const res = await axios.get('http://localhost:3001/api/currency'); 
+      setCurrencyData(res.data); // Update state wid fetched currency data..
+    } catch (err) { 
+      console.error('Error fetching currency data:', err); //log err if fetchin' fails..
+    }
+  };
+
   return (
-    <div>
-      <h1>Currency-Country</h1>
+    <>
+      <div className="header">
+        <img src={logo} alt="Logo" className="logo" />
+        <h1>Currency-Country</h1>
+      </div>
       <Login />
       <hr />
-      <Conversion />
+      <Conversion currenciesData={currencyData} />
       <hr />
-      <AddCurrency />
+      <AddCurrency currenciesData={currencyData}/>
       <hr />
-      <UpdateCurrency />
+      <UpdateCurrency currenciesData={currencyData} />
       <hr />
-      <Delete/> 
+      <Delete currenciesData={currencyData} />
       <hr />
-    </div>
+    </>
   );
 }
 
