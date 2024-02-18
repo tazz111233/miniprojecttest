@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../index.css'; 
 
-function AddCurrency() {
+function AddCurrency({ currenciesData }) {
   const [currencyCode, setCurrencyCode] = useState('');
   const [countryId, setCountryId] = useState('');
   const [conversionRate, setConversionRate] = useState('');
-  const [responseData, setResponseData] = useState(null); // State to hold response data
-  const [error, setError] = useState(null); // State to hold error
+  const [responseData, setResponseData] = useState(null); // State to hold res data..
+  const [error, setError] = useState(null); // State to hold err..
+
+  const handleChange = (event) => {
+    setCurrencyCode(event.target.value);
+    };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,7 +19,7 @@ function AddCurrency() {
       const response = await axios.post('http://localhost:3001/api/currency', {
         currencyCode,
         countryId: parseInt(countryId),
-        conversioRate: parseFloat(conversionRate) 
+        conversionRate: parseFloat(conversionRate) 
       });
       console.log('New Currency Created:', response.data);
       setResponseData(response.data); 
@@ -25,13 +29,19 @@ function AddCurrency() {
       setConversionRate('');
     } catch (error) {
       console.error('Error adding currency:', error);
-      setError('Failed to add currency. Please try again.'); 
+      setError('Failed to add currency. Please try again...'); 
     }
   };
 
   return (
     <div className="add-currency-container"> 
       <h2>Add Currency</h2>
+      <select className="select-field" value={currencyCode} onChange={handleChange}>
+        <option value="">Select code</option>
+        {currenciesData.map(currency => (
+          <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
+        ))}
+      </select>
       <form onSubmit={handleSubmit} className="currency-form"> 
         <div className="form-group"> 
           <label htmlFor="currencyCode">Currency Code:</label>
@@ -59,9 +69,9 @@ function AddCurrency() {
       {responseData && ( 
         <div className="display-data">
           <h3>New Currency Created:</h3>
-          <p>Currency Code: {responseData.currencyCode}</p>
-          <p>Country ID: {responseData.countryId}</p>
-          <p>Conversion Rate: {responseData.conversioRate}</p>
+          <p>Currency Code: <strong>{responseData.currencyCode}</strong></p>
+          <p>Country ID: <strong>{responseData.countryId}</strong></p>
+          <p>Conversion Rate: <strong>{responseData.conversionRate}</strong> </p>
         </div>
       )}
       {error && ( 
