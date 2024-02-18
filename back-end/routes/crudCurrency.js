@@ -74,15 +74,29 @@ router.put('/:id/:newRate', async (request, response) => {
   }  
 });
 
+// router.delete('/:id', async (request, response) => {
+//   try{
+//   const deleteId = parseInt(request.params.id);
+//   const index = await currency.destroy ({where: {id:deleteId}});
+//     if (index !== -1) throw new Error(index);
+//     response.sendStatus(204).json;
+//   } catch (error) {
+//     response.status(404).json({error: 'resource not found' });
+//   }
+// });
 router.delete('/:id', async (request, response) => {
-  try{
-  const deleteId = parseInt(request.params.id);
-  const index = await currency.destroy ({where: {id:deleteId}});
-    if (index !== -1) throw new Error(index);
-    response.sendStatus(204).json;
+  try {
+    const deleteId = parseInt(request.params.id);
+    const index = await currency.destroy({ where: { id: deleteId } });
+    if (index !== -1) {
+      response.sendStatus(204); 
+    } else {
+      response.status(404).json({ error: 'resource not found' });
+    }
   } catch (error) {
-    response.status(404).json({error: 'resource not found' });
+    response.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 module.exports = router;
