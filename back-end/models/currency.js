@@ -26,7 +26,9 @@ const Currencies = sequelize.define('Currencies', {
         type: DataTypes.FLOAT,
         allowNull: false
     }
-});
+}
+);
+
 
 Currencies.belongsTo(Country, { foreignKey: 'countryId' });
 

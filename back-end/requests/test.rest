@@ -1,4 +1,4 @@
-# GET http://localhost:3001/adios
+### GET http://localhost:3001/adios
 
 ###
 GET http://localhost:3001/api/currency
