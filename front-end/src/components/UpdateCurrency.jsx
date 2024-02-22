@@ -3,38 +3,51 @@ import axios from 'axios';
 import '../index.css';
 
 function UpdateCurrency({ currenciesData }) {
-  const [updateCode, setUpdateCode] = useState('');
-  const [amount, setAmount] = useState('');
-  const [putData, setPutData] = useState(null);
+  
+  const [updateCode, setUpdateCode] = useState('');//selected currencyCode
+  const [amount, setAmount] = useState(0.0);//amount result
+  const [putData, setPutData] = useState(null); // to store update result
 
+  // Func. to change in selected currencyCode
   const handleChange = (event) => {
     setUpdateCode(event.target.value);
   };
   
+  // Func. to handle currency update
   const handleUpdate = async (e) => {
     e.preventDefault();
+  
     try {
-      const response = await axios.put('http://localhost:3001/api/currency/2/' + amount, {
-        currencyCode: updateCode,
-      });
-      console.log(response.data);
+      // Find the currency in the currenciesData array based on selected code...
+      const updateId = currenciesData.find(currency => currency.currencyCode === updateCode);
+      // If currency not found, return...
+      if (!updateId) {
+        return;
+      }
+      // PUT req to update currency wid specified ID nd amount..
+     axios.put(`http://localhost:3001/api/currency/${updateId.id}/${amount}`).then((response)=>{
+      console.log(response.data);//if log successful..
       setPutData(response.data);
-      setUpdateCode('');
-      setAmount('');
+     })
+      
     } catch (error) {
-      console.error('Failed to Update currency:', error);
+      // If error occurs..(error handlin')
+      console.error('Error updating currency:', error);
+      setPutData(`Failed to update currency with code ${updateCode}`);
     }
-  };
-
+  }; 
   return (
     <div className="UpdateCurrency-container">
       <h2>Update Currency</h2>
+      
       <select className="select-Ufield" value={updateCode} onChange={handleChange}>
-            <option value="">Select code</option>
-            {currenciesData.map(currency => (
-              <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
-            ))}
-          </select>
+        <option value="">Select code</option>
+        {currenciesData.map(currency => (
+          <option key={currency.id} value={currency.currencyCode}>{currency.currencyCode}</option>
+        ))}
+      </select>
+      
+    
       <form onSubmit={handleUpdate} className="form-container">
         <div className="form-group">
           <label htmlFor="updateCode" className="UpdateCurrency-label">Currency Code:</label>
@@ -47,6 +60,7 @@ function UpdateCurrency({ currenciesData }) {
             required
           />
         </div>
+        
         <div className="form-group">
           <label htmlFor="amount" className="UpdateCurrency-label">Amount:</label>
           <input
@@ -58,6 +72,7 @@ function UpdateCurrency({ currenciesData }) {
             required
           />
         </div>
+       
         <div className="button-group">
           <button className="Update-button" type="submit">Update</button>
         </div>

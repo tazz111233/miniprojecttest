@@ -23,6 +23,7 @@ function App() {
       console.error('Error fetching currency data:', err); //log err if fetchin' fails..
     }
   };
+ 
 
   return (
     <>
