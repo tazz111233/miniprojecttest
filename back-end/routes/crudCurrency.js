@@ -10,7 +10,8 @@ router.get('/', async(request, response) => {
   } catch (error) {
       response.status(500).json({ error: error.message });
   }
-})
+}
+);
 
 router.get('/:id', async (request, response) => {
   try{
@@ -22,7 +23,8 @@ router.get('/:id', async (request, response) => {
   catch (error) {
     return response.status(404).json({ error: 'resource not found' });
   }
-});
+}
+);
 
 router.post('/', async (request, response) => {
   console.log('request recieved')
