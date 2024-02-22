@@ -37,7 +37,7 @@ function Conversion({ currenciesData }) {
                  id="currency-to"  />
         </div>
         <button className="convert-button"
-                 type="submit" >Convert Currency</button>
+                 type="submit" >Convert</button>
       </form>
     </div>
   );

@@ -5,7 +5,6 @@ import '../index.css';
 const DeleteId = ({ currenciesData }) => {
   const [deleteCode, setDeleteCode] = useState(''); //store the selected currencyCode..
   const [msg, setMsg] = useState(''); //store the msg after deletion..
-
   const handleChange = (event) => {
     setDeleteCode(event.target.value); //Update the selected currencyCode..
   };
@@ -17,12 +16,15 @@ const DeleteId = ({ currenciesData }) => {
         return; //If currency nt found, exit..
       }
       await axios.delete(`http://localhost:3001/api/currency/${deleteId.id}`); //Send del req to del the currency..
+      const updating = await axios.get('http://localhost:3001/api/currency')
+      console.log(updating.data); 
       setMsg(`Deleted ID wid code:  ${deleteCode}`); //set success msg..
     } catch (error) {
       console.error('Error deleting currency:', error); // log err if deletion fails..
       setMsg(`Failed to delete currency with code ${deleteCode}`); //set err msg..
     }
   };
+  
   
   return (
     <div className="delete-container">
