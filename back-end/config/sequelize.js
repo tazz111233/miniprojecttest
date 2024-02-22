@@ -12,7 +12,7 @@ const { Sequelize } = require('sequelize');
 //     }
 // }); 
 
-//connected through URL
+// connected through URL
 const sequelize = new Sequelize(process.env.PG_URL, {
         dialect: 'postgres',
         dialectOptions: {

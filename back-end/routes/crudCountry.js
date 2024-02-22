@@ -16,12 +16,13 @@ router.get('/',async (request, response) => {
 
 router.post('/', async (request, response) => {
   try {
-  const   { name } = request.body;
+  const name  = request.body;
   if (!name) {
     return response.status(400).json({ error: 'content missing' });
   }
-  const postCurrency = await country.create({
-    name });
+  const postCurrency = await country.create(
+    name );
+    console.log(name)
     return response.json(postCurrency);
 }
   catch(error){
