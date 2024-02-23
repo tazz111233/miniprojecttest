@@ -32,7 +32,7 @@ router.post('/', async (request, response) => {
 router.delete('/:id', async (request, response) => {
   try{
   const deleteId = parseInt(request.params.id);
-  await Currency.destroy({ where: { countryId: deleteId } });
+  // await Currency.destroy({ where: { countryId: deleteId } });
   const rows = await Country.destroy ({where: {id:deleteId}});
   if (rows > 0) {
     response.status(204).json({ msg:'deleted successfully' })
