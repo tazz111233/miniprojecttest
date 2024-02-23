@@ -28,8 +28,6 @@ GET http://localhost:3001/api/currency
 ### GET (cCroutes)
 GET http://localhost:3001/currency-countryName  
 
-
-
 ### GET (crudCountry)
 GET http://localhost:3001/api/country 
 
@@ -38,11 +36,8 @@ POST http://localhost:3001/api/country
 Content-Type: application/json
 
 {
-  "name" : "Kuwait"
+  "name" : "Iraq"
 }
 
 ### DELETE (crudCountry)
-DELETE http://localhost:3001/api/country/2 
-
-
-
+DELETE http://localhost:3001/api/country/32

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const country = require('../models/country')
-
+const Country = require('../models/country')
+const Currency = require('../models/currency');
 
 router.get('/',async (request, response) => {
    try{
-    const currencies = await country.findAll();
+    const currencies = await Country.findAll();
     response.json(currencies); 
    }
    catch (error){
@@ -13,32 +13,35 @@ router.get('/',async (request, response) => {
    }
 });  
 
-
 router.post('/', async (request, response) => {
-  try {
+  try { 
   const name  = request.body;
-  if (!name) {
+  if (!name) { 
     return response.status(400).json({ error: 'content missing' });
-  }
-  const postCurrency = await country.create(
-    name );
-    console.log(name)
+  }  
+  const postCurrency = await Country.create(
+    name );  
+    console.log(name) 
     return response.json(postCurrency);
-}
-  catch(error){
+} 
+  catch(error){  
       return response.status(500).json({ error: 'Internal Server Error' })
-  }
-});
-
+  } 
+}); 
 
 router.delete('/:id', async (request, response) => {
   try{
   const deleteId = parseInt(request.params.id);
-  const index = await country.destroy ({where: {id:deleteId}});
-    if (index !== -1) throw new Error(index);
-    response.sendStatus(204);
+  await Currency.destroy({ where: { countryId: deleteId } });
+  const rows = await Country.destroy ({where: {id:deleteId}});
+  if (rows > 0) {
+    response.status(204).json({ msg:'deleted successfully' })
+  } else {
+    response.status(404).json({ err: 'resource not found' });
+  }
   } catch (error) {
-    response.status(404).json({error: 'resource not found' });
+    console.error('Error deletin country:', error);
+    response.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

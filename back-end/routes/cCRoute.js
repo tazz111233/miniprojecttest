@@ -3,7 +3,6 @@ const router = express.Router();
 const Currency = require('../models/currency');
 const Country  = require('../models/country');
 
-
 router.get('/currency-countryName', async (req, res) => { 
   try {
     // const ccId = Number(req.params.id)
@@ -16,7 +15,7 @@ router.get('/currency-countryName', async (req, res) => {
     });
     const countryWid = givenCurrencies.map(currency => ({
       currencyCode: currency.currencyCode,
-      countryName: currency.Country.name,
+      countryName: currency.Country.name ? currency.Country.name : null, // Check if country exists,
     }));
     res.json(countryWid);
   } catch (error) {
@@ -26,3 +25,4 @@ router.get('/currency-countryName', async (req, res) => {
 });
 
 module.exports = router;
+
