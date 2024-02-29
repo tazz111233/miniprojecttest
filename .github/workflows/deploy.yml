@@ -28,7 +28,7 @@ jobs:
       # Step 4: Run backend tests (pass PG_URL env variable)
       - name: Run backend tests
         run: 
-            export PG_URL="your_postgres_url_here"
+            export PG_URL= postgres://test:1FTKnmnQGmUFqWYXE48NtVbJxageUjNY@dpg-cn24dd7109ks7393eoag-a.oregon-postgres.render.com/mini_project_jd2m 
             npm test
         working-directory: ./back-end
       
