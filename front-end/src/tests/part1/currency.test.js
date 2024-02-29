@@ -1,12 +1,7 @@
-const convertCurrency = require('../../utils/currency_utils') 
+import convertCurrency from '../../utils/currency_utils';
 
-/**
- * The tests below will be based on the following conversion amounts,
- * where $1 CDN (Canadian dollar) is equivalent to $0.75 USD (US dollar), 
- * and $0.58 GBP (British pounds). For ease of tests,
- * we have avoided putting any extraneous key-value pairs in the currency
- * objects, as we only need the conversion rate. 
- */
+
+//Conversion rates for different currencies
 
 const cdnCurrency = {
   conversionRate: 1 
@@ -27,6 +22,8 @@ const gbpCurrency = {
  * for more information on using jest to perform testing
  */
 
+
+describe('Currency Conversion Tests', () => {//Jest's describe function to group related tests together.
 /**
  * Test 1: Completed
  * This test performs a currency conversion, where it's really just the same currency
@@ -43,33 +40,64 @@ test('same currency conversion', () => {
  * Write a test that performs a currency conversion from CDN to GBP, for $100 CDN
  * Hint: the result should be $58 GBP according to our provided currencies.
  */
-test('CDN to GBP conversion', () => {
-   const amountCDN = 100;
-   const result = convertCurrency(cdnCurrency,gbpCurrency,amountCDN);
-   const amountGBP = amountCDN * gbpCurrency.conversionRate;
-   expect(result).toBeCloseTo(amountGBP); 
+test('$100 CDN to GBP conversion', () => {
+  const amountCDN = 100;
+  const expectedAmountOfGBP = 58;
+  //  Test Amount: $100 CDN
+  //  Expected Result: $58 GBP
+  //  Conversion Rate = Expected Amount in GBP / Amount in CDN
+  //                                = $58 GBP / $100 CDN
+  //                                      0.58
+  const result = convertCurrency(cdnCurrency, gbpCurrency, amountCDN);
+  expect(result).toBeCloseTo(expectedAmountOfGBP);
 })
 
 /**
  * Test 3: TODO
  * Write a test that performs a currency conversion from CDN to USD, for $75 CDN
  */
-test('CDN to USD conversion', () => {
-
+test('$75 CDN to USD conversion', () => {
+  const amountCDN = 75;
+    const expectedAmountOfUSD = 56; 
+    // Test Amount: $75 CDN
+    // Expected Result: $56 USD
+    // Conversion Rate = Expected Amount in USD / Amount in CDN
+    //                               = $56 USD / $75 CDN
+    //                                      0.75
+    const result = convertCurrency(cdnCurrency, usdCurrency, amountCDN);
+    expect(result).toBeCloseTo(expectedAmountOfUSD);
 })
 
 /**
  * Test 4: TODO
  * Write a test that performs a currency conversion from USD to GBP, for $200 USD
  */
-test('USD to GBP conversion', () => {
+test('$200 USD to GBP conversion', () => {
+  const amountUSD = 200;
+  const expectedAmountGBP = 155; 
+  // Test Amount: $200 USD
+  // Expected Result: $155 GBP
+  // Conversion Rate = Expected Amount in USD / Amount in CDN
+  //                               = $56 USD / $75 CDN
+  //                                      0.75
 
+  const result = convertCurrency(usdCurrency, gbpCurrency, amountUSD);
+  expect(result).toBeCloseTo(expectedAmountGBP);
 })
 
 /**
  * Test 5: TODO
  * Write a test that performs a currency conversion from GBP to CDN, for $50 GBP
  */
-test('CDN to USD conversion', () => {
-  
-})
+test('$50  CDN to USD conversion', () => {
+  const amountGBP = 50;
+  const expectedAmountCDN = 86; 
+  // Test Amount: $50 GBP
+  // Expected Result: $86 CDN
+  // Conversion Rate = Expected Amount in CDN / Amount in GBP
+  //                               = $86 CDN / £50 GBP
+  //                                      1.72
+  const result = convertCurrency(gbpCurrency, cdnCurrency, amountGBP);
+  expect(result).toBeCloseTo(expectedAmountCDN);
+ });
+}); 
