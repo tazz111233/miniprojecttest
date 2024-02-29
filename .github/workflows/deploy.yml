@@ -1,0 +1,51 @@
+name: Production Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Check out code from the repository
+      - name: Check out code
+        uses: actions/checkout@v2
+      
+      # Step 2: Set up the Node environment
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          
+      # Step 3: Install dependencies in the server directory
+      - name: Install server dependencies
+        run: npm install
+        working-directory: ./back-end
+      
+      # Step 4: Run backend tests (pass PG_URL env variable)
+      - name: Run backend tests
+        run: npm test
+        working-directory: ./back-end
+        env:
+          PG_URL: ${{ secrets.PG_URL }}
+      
+      # Step 5: Install dependencies in the frontend directory
+      - name: Install frontend dependencies
+        run: npm install
+        working-directory: ./front-end
+      
+      # Step 6: Run frontend tests
+      - name: Run frontend tests
+        run: npm test
+        working-directory: ./front-end
+      
+      # Step 7: Run server deploy hook using curl and secrets
+      - name: Run server deploy hook
+        run: curl ${{ secrets.SERVER_DEPLOYMENT_HOOK }}
+      
+      # Step 8: Run frontend deploy hook using curl and secrets
+      - name: Run frontend deploy hook
+        run: curl ${{ secrets.CLIENT_DEPLOYMENT_HOOK }}
