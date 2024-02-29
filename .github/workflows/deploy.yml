@@ -30,7 +30,7 @@ jobs:
         run: npm test
         working-directory: ./back-end
         env:
-          PG_URL: ${{ secrets.PG_URL }}
+          PG_URL: ${ secrets.PG_URL }
       
       # Step 5: Install dependencies in the frontend directory
       - name: Install frontend dependencies
@@ -44,8 +44,8 @@ jobs:
       
       # Step 7: Run server deploy hook using curl and secrets
       - name: Run server deploy hook
-        run: curl ${{ secrets.SERVER_DEPLOYMENT_HOOK }}
+        run: curl ${ secrets.SERVER_DEPLOYMENT_HOOK }
       
       # Step 8: Run frontend deploy hook using curl and secrets
       - name: Run frontend deploy hook
-        run: curl ${{ secrets.CLIENT_DEPLOYMENT_HOOK }}
+        run: curl ${ secrets.CLIENT_DEPLOYMENT_HOOK }
