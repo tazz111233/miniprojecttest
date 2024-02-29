@@ -39,7 +39,7 @@ jobs:
       
       # Step 6: Run frontend tests
       - name: Run frontend tests
-        run: npm  test
+        run: npm test
         working-directory: ./front-end
       
       # Step 7: Run server deploy hook using curl and secrets
