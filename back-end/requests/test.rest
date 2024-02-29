@@ -11,9 +11,9 @@ POST http://localhost:3001/api/currency
 Content-Type: application/json
 
 {
-  "currencyCode": "NGN",
+  "currencyCode": "UK",
   "countryId": 13,
-  "conversionRate": 98
+  "conversionRate": 9.54
 }
 
 ### Put Currency by ID

@@ -24,13 +24,18 @@ app.use((req, res) => { // Unknown Endpoint
   res.status(404).json({ error: 'MW-unknown endpoint' });
 });
 //Connection
-const PORT = 3001;
-sequelize.sync().then(() => {
-  console.log("connected to PG")
-  app.listen(PORT, () => {
-      console.log(`Server running on port: ${PORT}`)
-  })
-})
-.catch((error) => {
-  console.error("syncing database error", error);
-})
+const server = app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server running on port: ${server.address().port}`);
+});
+
+module.exports = server; 
+// const PORT = 3001;
+// sequelize.sync().then(() => {
+//   console.log("connected to PG")
+//   app.listen(PORT, () => {
+//       console.log(`Server running on port: ${PORT}`)
+//   })
+// })
+// .catch((error) => {
+//   console.error("syncing database error", error);
+// })
