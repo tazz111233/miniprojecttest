@@ -27,10 +27,10 @@ jobs:
       
       # Step 4: Run backend tests (pass PG_URL env variable)
       - name: Run backend tests
-        run: npm test
+        run: 
+            export PG_URL="your_postgres_url_here"
+            npm test
         working-directory: ./back-end
-        env:
-          PG_URL: ${ secrets.PG_URL }
       
       # Step 5: Install dependencies in the frontend directory
       - name: Install frontend dependencies
