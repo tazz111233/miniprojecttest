@@ -5,14 +5,24 @@ import axios from 'axios';
 import Conversion from "../../components/Conversion";
 
 test('Testing conversion section', async () => {//asynchronous test
-    let currenciesData;
-    try {
-        const res = await axios.get('http://localhost:3001/api/currency');
-        currenciesData = res.data;
-    } catch (error) {
-        console.error('Error fetching currency data:', error);
-        return;
-    }
+    // let currenciesData;
+    // try {
+    //     // const res = await axios.get('http://localhost:3001/api/currency');
+    //     currenciesData = res.data; 
+    // } catch (error) {
+    //     console.error('Error fetching currency data:', error);
+    //     return;
+    // }
+    const currenciesData = [{
+        id: 1, 
+        currencyCode: 'CDN',
+        conversionRate: 1
+      },
+      {
+        id: 2,
+        currencyCode: 'USD',
+        conversionRate: 0.75
+      }]
     ///After fetchin' the currency data, it renders the Conversion component wid the fetched data
     render(<Conversion currenciesData={currenciesData} />);
     
