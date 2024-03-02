@@ -44,8 +44,8 @@ jobs:
       
       # Step 7: Run server deploy hook using curl and secrets
       - name: Run server deploy hook
-        run: curl ${secrets.SERVER_DEPLOYMENT_HOOK}
+        run: curl ${secrets.SERVER}
       
       # Step 8: Run frontend deploy hook using curl and secrets
       - name: Run frontend deploy hook
-        run: curl ${secrets.CLIENT_DEPLOYMENT_HOOK}
+        run: curl ${secrets.CLIENT}
