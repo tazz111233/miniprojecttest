@@ -37,10 +37,10 @@ jobs:
         run: npm install
         working-directory: ./front-end
       
-      # # Step 6: Run frontend tests
-      # - name: Run frontend tests
-      #   run: npm run test
-      #   working-directory: ./front-end
+      # Step 6: Run frontend tests
+      - name: Run frontend tests
+        run: npm run test
+        working-directory: ./front-end
       
       # Step 7: Run server deploy hook using curl and secrets
       - name: Run server deploy hook
