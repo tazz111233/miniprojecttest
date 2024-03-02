@@ -28,9 +28,6 @@
     "vite": "^5.0.8"
   },
   "jest": {
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
+    "testEnvironment": "jsdom"
   }
 }
