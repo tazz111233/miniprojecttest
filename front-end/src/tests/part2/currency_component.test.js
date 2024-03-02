@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import axios from 'axios'; 
+// import axios from 'axios'; 
 import Conversion from "../../components/Conversion";
 
 test('Testing conversion section', async () => {//asynchronous test
